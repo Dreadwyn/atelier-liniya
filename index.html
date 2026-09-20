@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ателье «Линия» — пошив и ремонт одежды в Бишкеке</title>
+  <meta name="description" content="Индивидуальный пошив, ремонт и подгонка одежды. Ателье «Линия» в Бишкеке — сроки, цены, запись в Telegram." />
+  <meta property="og:title" content="Ателье «Линия»" />
+  <meta property="og:description" content="Пошив и ремонт одежды. Запись онлайн." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0a09;
+      --surface: #1c1917;
+      --card: #292524;
+      --text: #fafaf9;
+      --muted: #a8a29e;
+      --accent: #e7b4a5;
+      --accent-strong: #d97757;
+      --line: rgba(255,255,255,0.08);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Manrope, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      padding: .9rem 1.35rem; border-radius: 999px; font-weight: 700; font-size: .95rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #1c0f0c; border: none; cursor: pointer; transition: transform .2s, filter .2s;
+    }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); filter: none; }
+
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(12,10,9,.75);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 72px; gap: 1rem;
+    }
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem; font-weight: 700; letter-spacing: .02em;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.25rem; color: var(--muted); font-size: .92rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { display: none; }
+    @media (min-width: 860px) {
+      .nav-cta { display: inline-flex; padding: .65rem 1rem; font-size: .85rem; }
+    }
+    @media (max-width: 759px) {
+      .nav-links { display: none; }
+    }
+
+    .hero {
+      padding: 4.5rem 0 3.5rem;
+      background:
+        radial-gradient(ellipse 80% 50% at 80% -10%, rgba(217,119,87,.25), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 10% 20%, rgba(231,180,165,.12), transparent 50%);
+    }
+    .hero-grid {
+      display: grid; gap: 2.5rem; align-items: center;
+    }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.15fr .85fr; gap: 3rem; }
+    }
+    .eyebrow {
+      display: inline-block; margin-bottom: 1rem; padding: .35rem .75rem;
+      border-radius: 999px; border: 1px solid var(--line);
+      color: var(--accent); font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.05; font-weight: 700; margin-bottom: 1rem;
+    }
+    .lead { color: var(--muted); font-size: 1.05rem; max-width: 34rem; margin-bottom: 1.75rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.75rem; }
+    .stats { display: flex; flex-wrap: wrap; gap: 1.5rem; color: var(--muted); font-size: .9rem; }
+    .stats strong { display: block; color: var(--text); font-size: 1.35rem; font-weight: 800; }
+    .hero-card {
+      background: linear-gradient(160deg, #292524, #1c1917 60%);
+      border: 1px solid var(--line); border-radius: 28px; padding: 1.5rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+    }
+    .hero-visual {
+      aspect-ratio: 4/5; border-radius: 22px; margin-bottom: 1rem;
+      background:
+        linear-gradient(180deg, transparent 40%, rgba(12,10,9,.75)),
+        linear-gradient(135deg, #44403c, #d97757 45%, #e7b4a5);
+      display: flex; align-items: flex-end; padding: 1.25rem;
+      font-family: "Cormorant Garamond", serif; font-size: 1.8rem;
+    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .pill {
+      font-size: .78rem; color: var(--muted); border: 1px solid var(--line);
+      border-radius: 999px; padding: .35rem .7rem;
+    }
+
+    section { padding: 4rem 0; }
+    .section-head { text-align: center; margin-bottom: 2.5rem; }
+    .section-head h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: .5rem;
+    }
+    .section-head p { color: var(--muted); max-width: 36rem; margin-inline: auto; }
+
+    .grid-3 { display: grid; gap: 1rem; }
+    @media (min-width: 800px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+    .card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: rgba(231,180,165,.35); transform: translateY(-3px); }
+    .card .icon {
+      width: 42px; height: 42px; border-radius: 12px; margin-bottom: 1rem;
+      display: grid; place-items: center;
+      background: rgba(231,180,165,.12); color: var(--accent); font-size: 1.2rem;
+    }
+    .card h3 { font-size: 1.15rem; margin-bottom: .5rem; }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    .gallery {
+      display: grid; gap: .75rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 800px) { .gallery { grid-template-columns: repeat(4, 1fr); } }
+    .shot {
+      aspect-ratio: 3/4; border-radius: 16px; border: 1px solid var(--line);
+      overflow: hidden; position: relative;
+    }
+    .shot span {
+      position: absolute; left: .8rem; bottom: .8rem; z-index: 1;
+      font-size: .8rem; font-weight: 600;
+    }
+    .shot::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.65));
+    }
+    .s1 { background: linear-gradient(145deg, #57534e, #e7b4a5); }
+    .s2 { background: linear-gradient(145deg, #292524, #78716c 40%, #d97757); }
+    .s3 { background: linear-gradient(160deg, #44403c, #a8a29e 50%, #e7b4a5); }
+    .s4 { background: linear-gradient(120deg, #1c1917, #d97757 70%, #fafaf9); }
+
+    .steps { display: grid; gap: 1rem; }
+    @media (min-width: 800px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+    .step {
+      padding: 1.25rem; border-radius: var(--radius);
+      background: var(--surface); border: 1px solid var(--line);
+    }
+    .step b { color: var(--accent); font-size: .85rem; }
+    .step h3 { margin: .4rem 0 .35rem; font-size: 1.05rem; }
+    .step p { color: var(--muted); font-size: .9rem; }
+
+    .prices { display: grid; gap: 1rem; }
+    @media (min-width: 800px) { .prices { grid-template-columns: repeat(3, 1fr); } }
+    .price {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column;
+    }
+    .price.featured {
+      border-color: rgba(231,180,165,.45);
+      background: linear-gradient(180deg, rgba(231,180,165,.1), var(--surface));
+    }
+    .price h3 { margin-bottom: .35rem; }
+    .price .amount {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.4rem; margin: .5rem 0 1rem;
+    }
+    .price ul { list-style: none; color: var(--muted); font-size: .92rem; flex: 1; }
+    .price li { padding: .35rem 0; border-top: 1px solid var(--line); }
+    .price .btn { margin-top: 1.25rem; width: 100%; }
+
+    .faq { max-width: 720px; margin-inline: auto; }
+    details {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: .7rem;
+    }
+    summary { cursor: pointer; font-weight: 600; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    details p { color: var(--muted); margin-top: .7rem; font-size: .95rem; }
+
+    .cta {
+      margin: 1rem 0 3rem; padding: 2.5rem;
+      border-radius: 28px; border: 1px solid rgba(231,180,165,.25);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(217,119,87,.25), transparent 40%),
+        var(--surface);
+      text-align: center;
+    }
+    .cta h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: .6rem; }
+    .cta p { color: var(--muted); margin-bottom: 1.25rem; }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 2rem 0 2.5rem;
+      color: var(--muted); font-size: .9rem; text-align: center;
+    }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#top">Линия<span>.</span></a>
+      <nav class="nav-links" aria-label="Навигация">
+        <a href="#services">Услуги</a>
+        <a href="#works">Работы</a>
+        <a href="#process">Как работаем</a>
+        <a href="#prices">Цены</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn nav-cta" href="https://t.me/Dredwyn" target="_blank" rel="noopener noreferrer">Записаться</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Бишкек · пошив и ремонт</span>
+          <h1>Одежда, которая сидит идеально</h1>
+          <p class="lead">Ателье «Линия» — индивидуальный пошив, подгонка и аккуратный ремонт. Понятные сроки, примерки и запись в мессенджере.</p>
+          <div class="hero-actions">
+            <a class="btn" href="https://t.me/Dredwyn" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+            <a class="btn btn-ghost" href="#prices">Смотреть цены</a>
+          </div>
+          <div class="stats">
+            <div><strong>5–10</strong>дней на пошив</div>
+            <div><strong>3</strong>примерки в работе</div>
+            <div><strong>7</strong>лет опыта</div>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Превью ателье">
+          <div class="hero-visual">Коллекция сезона</div>
+          <div class="pill-row">
+            <span class="pill">Платья</span>
+            <span class="pill">Костюмы</span>
+            <span class="pill">Ремонт</span>
+            <span class="pill">Подгонка</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Услуги</h2>
+          <p>От быстрой подгонки до полного пошива по меркам — без лишней суеты.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="icon">✂</div><h3>Индивидуальный пошив</h3><p>Платья, костюмы, рубашки и верхняя одежда по вашим меркам и эскизу.</p></article>
+          <article class="card"><div class="icon">◎</div><h3>Подгонка по фигуре</h3><p>Укоротить, сузить, перенести вытачки — чтобы любимая вещь села как надо.</p></article>
+          <article class="card"><div class="icon">↺</div><h3>Ремонт и реставрация</h3><p>Молнии, подкладка, дыры, перекрой — аккуратно и в срок.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="works">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Из последних работ</h2>
+          <p>Примеры стиля. На реальном проекте сюда ставятся фото клиентов (с разрешения).</p>
+        </div>
+        <div class="gallery" aria-label="Галерея работ">
+          <div class="shot s1"><span>Вечернее платье</span></div>
+          <div class="shot s2"><span>Мужской костюм</span></div>
+          <div class="shot s3"><span>Летний сет</span></div>
+          <div class="shot s4"><span>Подгонка пальто</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Как проходит заказ</h2>
+          <p>Четыре шага — от сообщения до готовой вещи.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><b>01</b><h3>Заявка</h3><p>Пишете в Telegram: что нужно сшить или починить.</p></div>
+          <div class="step"><b>02</b><h3>Замер</h3><p>Встреча в ателье или выезд по городу.</p></div>
+          <div class="step"><b>03</b><h3>Примерки</h3><p>Согласуем посадку и детали на 1–3 примерках.</p></div>
+          <div class="step"><b>04</b><h3>Выдача</h3><p>Забираете готовую вещь или доставка по Бишкеку.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prices">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Ориентир по ценам</h2>
+          <p>Точная смета — после замера. Ниже стартовые пакеты для понимания бюджета.</p>
+        </div>
+        <div class="prices">
+          <article class="price">
+            <h3>Ремонт</h3>
+            <div class="amount">от 500&nbsp;с</div>
+            <ul>
+              <li>Молнии и пуговицы</li>
+              <li>Подшив длины</li>
+              <li>Мелкий ремонт швов</li>
+            </ul>
+            <a class="btn btn-ghost" href="https://t.me/Dredwyn" target="_blank" rel="noopener noreferrer">Уточнить</a>
+          </article>
+          <article class="price featured">
+            <h3>Подгонка</h3>
+            <div class="amount">от 1&nbsp;500&nbsp;с</div>
+            <ul>
+              <li>Посадка по фигуре</li>
+              <li>1–2 примерки</li>
+              <li>Срок 2–4 дня</li>
+            </ul>
+            <a class="btn" href="https://t.me/Dredwyn" target="_blank" rel="noopener noreferrer">Записаться</a>
+          </article>
+          <article class="price">
+            <h3>Пошив</h3>
+            <div class="amount">от 8&nbsp;000&nbsp;с</div>
+            <ul>
+              <li>Эскиз и ткань</li>
+              <li>До 3 примерок</li>
+              <li>Срок 5–10 дней</li>
+            </ul>
+            <a class="btn btn-ghost" href="https://t.me/Dredwyn" target="_blank" rel="noopener noreferrer">Обсудить</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Вопросы</h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Нужна ли своя ткань?</summary>
+            <p>Можно принести свою или выбрать у нас. Помогаем с расходом и фурнитурой.</p>
+          </details>
+          <details>
+            <summary>Делаете ли вы мужскую одежду?</summary>
+            <p>Да: брюки, пиджаки, рубашки и верхняя одежда — по меркам.</p>
+          </details>
+          <details>
+            <summary>Как оплатить?</summary>
+            <p>Наличные, перевод на карту или электронный кошелёк. Обычно 50% предоплата на пошив.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="cta" id="contact">
+        <h2>Готовы к примерке?</h2>
+        <p>Напишите в Telegram — ответим по срокам и стоимости в тот же день.</p>
+        <a class="btn" href="https://t.me/Dredwyn" target="_blank" rel="noopener noreferrer">Открыть Telegram @Dredwyn</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Демо-кейс для портфолио <a href="https://dreadwyn.github.io/Site/">NB.Dev</a> · Ателье «Линия»</p>
+      <p style="margin-top:.4rem"><a href="https://github.com/Dreadwyn/atelier-liniya">Исходники на GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>
